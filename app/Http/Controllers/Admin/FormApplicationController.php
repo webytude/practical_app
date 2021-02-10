@@ -20,6 +20,7 @@ class FormApplicationController extends Controller
 
     public function showApplicationFormPost(Request $request)
     {
+        // dd($request->all());
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'email' => 'required|unique:users|email',
@@ -55,8 +56,12 @@ class FormApplicationController extends Controller
         $te_array = $this->technicalExperience($data);
         $lang = $this->langaugeKnown($data);
         $user =  User::create($userdetail);
-        $user->rel_language()->saveMany($lang);
-        $user->rel_technicalex()->saveMany($te_array);
+        if ($lang) {
+            $user->rel_language()->saveMany($lang);
+        }
+        if ($te_array) {
+            $user->rel_technicalex()->saveMany($te_array);
+        }
         $user->rel_workex()->saveMany($we_array);
         return $user;
     }
@@ -81,7 +86,7 @@ class FormApplicationController extends Controller
     public function langaugeKnown($data)
     {
         $lang_array = array();
-        if ($data['english']) {
+        if (isset($data['english'])) {
             $lang = new LanguageKnown;
             $lang->language = 'english';
             if (isset($data['english']['read'])) {
@@ -95,7 +100,7 @@ class FormApplicationController extends Controller
             }
             $lang_array[]  = $lang;
         }
-        if ($data['hindi']) {
+        if (isset($data['hindi'])) {
             $lang = new LanguageKnown;
             $lang->language = 'hindi';
             if (isset($data['hindi']['read'])) {
@@ -109,7 +114,7 @@ class FormApplicationController extends Controller
             }
             $lang_array[]  = $lang;
         }
-        if ($data['gujarati']) {
+        if (isset($data['gujarati'])) {
             $lang = new LanguageKnown;
             $lang->language = 'gujarati';
             if (isset($data['gujarati']['read'])) {

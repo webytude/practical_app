@@ -1,3 +1,6 @@
+@php
+Session::put('userindex',Request::fullUrl());
+@endphp
 @section('title', "Dashboard" )
 @extends('admin.layouts.main')
 @section('main_contant')
@@ -56,9 +59,9 @@
                                         <a class="btn btn-primary btn-sm" href="{{ route('admin.user.view',$user->id) }}">
                                             <i class="fas fa-eye"></i>
                                         </a>
-                                        <!-- <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" href="{{ route('admin.user.edit',$user->id) }}">
                                             <i class="fas fa-pencil-alt"></i>
-                                        </a> -->
+                                        </a>
                                         <a class="btn btn-danger btn-sm" href="{{ route('admin.user.delete',$user->id) }}" onclick="return confirm('Are you sure you want to delete this item?');">
                                             <i class="fas fa-trash"></i>
                                         </a>
@@ -68,6 +71,18 @@
                                 @endif
                             </tbody>
                         </table>
+                    </div>
+                    <div class="p-3">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5">
+
+                            </div>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="text-right">
+                                    {{ $users->links() }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -16,12 +16,15 @@
                             </div>
                             <form action="{{ route('post.show_form') }}" method="post">
                                 @csrf()
-                                @if ($errors->any())
-                                @foreach ($errors->all() as $error)
-                                <div>{{$error}}</div>
-                                @endforeach
-                                @endif
+
                                 <div class="card-body">
+                                    @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                    <div class="form-group">
+                                        <span id="error" class="error invalid-feedback">{{$error}}</span>
+                                    </div>
+                                    @endforeach
+                                    @endif
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Name</label>
                                         <input type="text" class="form-control" placeholder="Name" name="name" required>
@@ -41,7 +44,7 @@
                                             <label class="form-check-label">Male</label>
                                         </div>
                                         <div class="form-check d-inline">
-                                            <input class="form-check-input" type="radio" value="M" name="gender">
+                                            <input class="form-check-input" type="radio" value="F" name="gender">
                                             <label class="form-check-label">Female</label>
                                         </div>
                                     </div>

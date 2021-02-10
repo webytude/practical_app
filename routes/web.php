@@ -44,5 +44,7 @@ Route::group([
         Route::get('user/index', [UserController::class, 'index'])->name('user.index');
         Route::get('user/view/{id}', [UserController::class, 'view'])->name('user.view');
         Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+        Route::get('user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+        Route::post('user/edit/{id}', [UserController::class, 'update'])->name('user.update');
     });
 });

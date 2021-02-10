@@ -70,7 +70,16 @@
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Langauge</th>
+                                    <th>Read</th>
+                                    <th>Write</th>
+                                    <th>Speak</th>
+                                </tr>
+                            </thead>
                             <tbody>
+
                                 @foreach($user->rel_language as $lang)
                                 <tr>
                                     <td>{{ $lang->language }}</td>
@@ -89,6 +98,12 @@
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Skill</th>
+                                    <th>Level</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 @foreach($user->rel_technicalex as $te)
                                 <tr>
@@ -108,6 +123,14 @@
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Company Name</th>
+                                    <th>Duration Month</th>
+                                    <th>Location</th>
+                                    <th>Designation</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 @foreach($user->rel_workex as $we)
                                 <tr>
